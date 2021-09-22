@@ -89,6 +89,9 @@ def process_iqe_cji(
     image_tag="",
     cji_name=None,
     template_path=None,
+    requirements="",
+    requirements_priority="",
+    test_importance="",
 ):
     log.info("processing IQE ClowdJobInvocation")
 
@@ -108,6 +111,9 @@ def process_iqe_cji(
     params["IMAGE_TAG"] = image_tag
     params["NAME"] = cji_name or f"iqe-{str(uuid.uuid4()).split('-')[0]}"
     params["APP_NAME"] = clowd_app_name
+    params["REQUIREMENTS"] = requirements
+    params["REQUIREMENTS_PRIORITY"] = requirements_priority
+    params["TEST_IMPORTANCE"] = test_importance
 
     processed_template = process_template(template_data, params=params)
 
